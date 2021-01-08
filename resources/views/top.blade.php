@@ -5,5 +5,6 @@
   </head>
   <body>
     <h1>もうちょっとそれっぽいやつ</h1>
+    <p>{{ $message }}</p>
   </body>
 </html>

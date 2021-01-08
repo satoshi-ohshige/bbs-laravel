@@ -2,18 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use Bbs\UseCase\TopUseCaseInterface;
 use Illuminate\Http\Request;
 
 class TopController extends Controller
 {
     /**
-     * Handle the incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * TopController constructor.
      */
+    public function __construct(private TopUseCaseInterface $topUseCase)
+    {
+    }
+
     public function __invoke(Request $request)
     {
-        return view('top');
+        $message = $this->topUseCase->handle();
+        return view('top', ['message' => $message]);
     }
 }
