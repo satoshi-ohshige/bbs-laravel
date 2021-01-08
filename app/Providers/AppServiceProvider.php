@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use Bbs\UseCase\TopUseCase;
+use Bbs\UseCase\TopUseCaseInterface;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -14,6 +16,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+        $this->app->singleton(TopUseCaseInterface::class, TopUseCase::class);
     }
 
     /**
