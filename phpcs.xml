@@ -6,5 +6,6 @@
         <exclude name="Generic.WhiteSpace.ScopeIndent.IncorrectExact"/>
     </rule>
     <file>app</file>
+    <file>packages</file>
     <file>tests</file>
 </ruleset>
