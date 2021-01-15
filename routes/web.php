@@ -17,3 +17,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [TopController::class, 'index']);
 Route::get('/threads/create', [ThreadsController::class, 'create']);
+Route::post('/threads/create', [ThreadsController::class, 'post']);
+
