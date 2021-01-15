@@ -14,7 +14,7 @@ class TopController extends Controller
     {
     }
 
-    public function __invoke(Request $request)
+    public function index(Request $request)
     {
         $message = $this->topUseCase->handle();
         return view('top', ['message' => $message]);
