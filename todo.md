@@ -14,6 +14,7 @@
 
 # DOING
 - スレッド作成機能
+  - thread/create のフォームタグを作る
 
 # DONE
 
