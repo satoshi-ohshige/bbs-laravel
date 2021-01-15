@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ThreadsController;
 use App\Http\Controllers\TopController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,3 +16,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', TopController::class);
+Route::get('/threads/create', [ThreadsController::class, 'create']);
