@@ -3,12 +3,17 @@
 namespace Bbs\UseCase\Threads;
 
 use Bbs\Domain\Thread;
+use Bbs\Repository\ThreadRepositoryInterface;
 
 class ThreadsGetUseCase implements ThreadsGetUseCaseInterface
 {
-    public function handle(): Thread
+    public function __construct(private ThreadRepositoryInterface $threadRepository)
     {
-        return new Thread(11, 'sampleTitle', 'sampleBody', new \DateTime);
+        
+    }
+    public function handle(int $id): Thread
+    {
+        return $this->threadRepository->get($id);
     }
 
 }

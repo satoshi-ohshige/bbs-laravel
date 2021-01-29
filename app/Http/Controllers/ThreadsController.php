@@ -18,9 +18,9 @@ class ThreadsController extends Controller
         $threadsPostUseCase->handle('sampleTitle', 'sampleBody');
     }
 
-    public function index(ThreadsGetUseCaseInterface $threadsGetUseCase)
+    public function index($id, ThreadsGetUseCaseInterface $threadsGetUseCase)
     {
-        $thread = $threadsGetUseCase->handle();
+        $thread = $threadsGetUseCase->handle((int)$id);
         return view('threads.index', ['title' => $thread->getTitle(), 'body' => $thread->getBody()]);
     }
 }

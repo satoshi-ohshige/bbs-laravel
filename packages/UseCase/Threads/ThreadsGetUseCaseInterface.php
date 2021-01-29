@@ -6,5 +6,5 @@ use Bbs\Domain\Thread;
 
 interface ThreadsGetUseCaseInterface
 {
-    public function handle(): Thread;
+    public function handle(int $id): Thread;
 }
