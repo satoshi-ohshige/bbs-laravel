@@ -8,7 +8,7 @@ class ThreadsGetUseCase implements ThreadsGetUseCaseInterface
 {
     public function handle(): Thread
     {
-        return new Thread('sampleTitle', 'sampleBody', new \DateTime);
+        return new Thread(11, 'sampleTitle', 'sampleBody', new \DateTime);
     }
 
 }
