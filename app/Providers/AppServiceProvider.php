@@ -19,7 +19,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
         $this->app->singleton(TopUseCaseInterface::class, TopUseCase::class);
         $this->app->singleton(ThreadsPostUseCaseInterface::class, ThreadsPostUseCase::class);
         $this->app->singleton(ThreadsGetUseCaseInterface::class, ThreadsGetUseCase::class);
