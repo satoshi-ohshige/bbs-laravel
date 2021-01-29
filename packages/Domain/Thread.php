@@ -10,4 +10,19 @@ class Thread
         private \DateTimeInterface $postDate,
     ) {
     }
+
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+
+    public function getBody(): string
+    {
+        return $this->body;
+    }
+
+    public function getPostDate(): \DateTimeInterface
+    {
+        return $this->postDate;
+    }
 }
