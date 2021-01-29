@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Bbs\UseCase\Threads\ThreadsGetUseCaseInterface;
 use Bbs\UseCase\Threads\ThreadsPostUseCaseInterface;
 use Illuminate\Http\Request;
 
@@ -17,8 +18,9 @@ class ThreadsController extends Controller
         $threadsPostUseCase->handle('sampleTitle', 'sampleBody');
     }
 
-    public function index()
+    public function index(ThreadsGetUseCaseInterface $threadsGetUseCase)
     {
-        return view('threads.index', ['title' => 'すれっどたいとる', 'body' => 'すれっどほんぶん']);
+        $thread = $threadsGetUseCase->handle();
+        return view('threads.index', ['title' => $thread->getTitle(), 'body' => $thread->getBody()]);
     }
 }
