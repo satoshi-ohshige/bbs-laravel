@@ -16,4 +16,9 @@ class ThreadsController extends Controller
     {
         $threadsPostUseCase->handle('sampleTitle', 'sampleBody');
     }
+
+    public function index()
+    {
+        return view('threads.index', ['title' => 'すれっどたいとる', 'body' => 'すれっどほんぶん']);
+    }
 }
