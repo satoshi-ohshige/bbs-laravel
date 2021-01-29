@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use Bbs\UseCase\Threads\ThreadsGetUseCase;
+use Bbs\UseCase\Threads\ThreadsGetUseCaseInterface;
 use Bbs\UseCase\Threads\ThreadsPostUseCase;
 use Bbs\UseCase\Threads\ThreadsPostUseCaseInterface;
 use Bbs\UseCase\TopUseCase;
@@ -20,6 +22,7 @@ class AppServiceProvider extends ServiceProvider
         //
         $this->app->singleton(TopUseCaseInterface::class, TopUseCase::class);
         $this->app->singleton(ThreadsPostUseCaseInterface::class, ThreadsPostUseCase::class);
+        $this->app->singleton(ThreadsGetUseCaseInterface::class, ThreadsGetUseCase::class);
     }
 
     /**
