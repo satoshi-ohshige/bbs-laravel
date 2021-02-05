@@ -5,5 +5,5 @@ namespace Bbs\UseCase;
 interface TopUseCaseInterface
 {
 
-    public function handle(): string;
+    public function handle(): array;
 }

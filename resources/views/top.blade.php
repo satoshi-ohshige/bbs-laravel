@@ -1,10 +1,15 @@
+@php
+// @var \Bbs\Domain\Thread[] $threads
+@endphp
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>掲示板トップ</title>
-  </head>
-  <body>
-    <h1>もうちょっとそれっぽいやつ</h1>
-    <p>{{ $message }}</p>
-  </body>
+<html lang="ja">
+<head>
+  <title>掲示板トップ</title>
+</head>
+<body>
+@foreach($threads as $thread)
+  <h1>{{ $thread->getTitle() }}</h1>
+  <p>{{ $thread->getBody() }}</p>
+@endforeach
+</body>
 </html>

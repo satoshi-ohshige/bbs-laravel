@@ -17,4 +17,15 @@ class ThreadRepository implements ThreadRepositoryInterface
 
         return unserialize(Storage::get("persistence/thread_{$id}.txt"));
     }
+
+    public function getAll(): array
+    {
+        $files = Storage::allFiles("persistence");
+        $threads = [];
+        foreach ($files as $file) {
+            $threads[] = unserialize(Storage::get($file));
+        }
+        
+        return $threads;
+    }
 }
