@@ -8,7 +8,7 @@ class ThreadsPostUseCase implements ThreadsPostUseCaseInterface
 {
     public function handle(string $title, string $body): void
     {
-        // TODO: Implement handle() method.
+        $thread = Thread::factory($title, $body, new \DateTimeImmutable());
     }
 
 }
