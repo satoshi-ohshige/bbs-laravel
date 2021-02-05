@@ -15,7 +15,9 @@ class ThreadsController extends Controller
 
     public function post(Request $request, ThreadsPostUseCaseInterface $threadsPostUseCase)
     {
-        $threadsPostUseCase->handle('sampleTitle', 'sampleBody');
+        $threadsPostUseCase->handle($request->input('title'), $request->input('body'));
+
+        return redirect('/');
     }
 
     public function index($id, ThreadsGetUseCaseInterface $threadsGetUseCase)

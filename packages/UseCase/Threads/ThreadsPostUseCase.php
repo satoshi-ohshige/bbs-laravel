@@ -3,12 +3,18 @@
 namespace Bbs\UseCase\Threads;
 
 use Bbs\Domain\Thread;
+use Bbs\Repository\ThreadRepositoryInterface;
 
 class ThreadsPostUseCase implements ThreadsPostUseCaseInterface
 {
-    public function handle(string $title, string $body): void
+    public function __construct(private ThreadRepositoryInterface $threadRepository)
     {
-        // TODO: Implement handle() method.
     }
 
+    public function handle(string $title, string $body): void
+    {
+        $thread = Thread::factory($title, $body, new \DateTimeImmutable());
+
+        $this->threadRepository->save($thread);
+    }
 }
