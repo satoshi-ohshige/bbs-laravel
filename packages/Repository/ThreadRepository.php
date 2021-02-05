@@ -9,12 +9,12 @@ class ThreadRepository implements ThreadRepositoryInterface
 {
     public function save(Thread $thread): void
     {
-        Storage::put('persistence/threads.txt', $thread->getBody());
+        Storage::put("persistence/thread_{$thread->getId()}.txt", serialize($thread));
     }
 
     public function get(int $id): Thread
     {
 
-        return new Thread($id, 'sampleTitle', 'sampleBody', new \DateTime());
+        return unserialize(Storage::get("persistence/thread_{$id}.txt"));
     }
 }
