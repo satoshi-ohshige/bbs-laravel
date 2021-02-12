@@ -14,6 +14,7 @@
 
 - make qa 実行
 - テスト実装
+ - ThreadRepositoryGetTestで存在しないファイルを指定したときのテストを書く
 
 # DONE
 - スレッド作成機能
