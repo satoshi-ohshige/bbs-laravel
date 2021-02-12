@@ -18,7 +18,7 @@ class ThreadRepositoryGetTest extends TestCase
         Storage::delete("persistence/thread_{$this->targetId}.txt");
     }
 
-    public function test()
+    public function testGetSuccess()
     {
         // 1. 準備
         $thread = new Thread($this->targetId, 'test_title', 'test_body', new \DateTimeImmutable());
