@@ -38,14 +38,15 @@
     "autoload": {
         "psr-4": {
             "App\\": "app/",
-            "Bbs\\": "packages/",
+            "Bbs\\": "packages/src/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "Tests\\": "tests/",
+            "BbsTests\\": "packages/tests/"
         }
     },
     "minimum-stability": "dev",
