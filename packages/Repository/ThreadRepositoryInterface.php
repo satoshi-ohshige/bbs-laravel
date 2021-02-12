@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Bbs\Repository;
-
 
 use Bbs\Domain\Thread;
 

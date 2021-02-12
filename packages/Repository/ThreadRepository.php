@@ -25,7 +25,7 @@ class ThreadRepository implements ThreadRepositoryInterface
         foreach ($files as $file) {
             $threads[] = unserialize(Storage::get($file));
         }
-        
+
         return $threads;
     }
 }
