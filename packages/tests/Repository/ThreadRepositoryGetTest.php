@@ -5,6 +5,7 @@ namespace BbsTests\Repository;
 use Bbs\Domain\Thread;
 use Bbs\Repository\ThreadRepository;
 use BbsTests\TestCase;
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Support\Facades\Storage;
 
 class ThreadRepositoryGetTest extends TestCase
@@ -34,12 +35,11 @@ class ThreadRepositoryGetTest extends TestCase
         Storage::shouldReceive('get')
             ->once()
             ->with("persistence/thread_{$targetId}.txt")
-            ->andReturn(false);
+            ->andThrow(FileNotFoundException::class);
 
         // 2. テスト対象を実行
         $threadRepository = new ThreadRepository();
-        $response = $threadRepository->get($targetId);
-
-        // 3. 検証
+        $this->expectException(FileNotFoundException::class);
+        $threadRepository->get($targetId);
     }
 }
