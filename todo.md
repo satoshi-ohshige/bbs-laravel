@@ -14,7 +14,7 @@
 
 - make qa 実行
 - テスト実装
- - ThreadRepositoryGetTestで存在しないファイルを指定したときのテストを書く
+- threadユースケースのテスト追加
 
 # DONE
 - スレッド作成機能
@@ -23,3 +23,5 @@
 - welcomeページ
 - スレッド詳細(コメント未実装)閲覧機能
 - mockでテスト書く
+- ThreadRepositoryGetTestで存在しないファイルを指定したときのテストを書く
+- ThreadRepositoryGetTestでファイルが存在しない場合はnullを返す
