@@ -39,7 +39,9 @@ class ThreadRepositoryGetTest extends TestCase
 
         // 2. テスト対象を実行
         $threadRepository = new ThreadRepository();
-        $this->expectException(FileNotFoundException::class);
-        $threadRepository->get($targetId);
+        $thread = $threadRepository->get($targetId);
+
+        // 3. 検証
+        $this->assertNull($thread);
     }
 }
