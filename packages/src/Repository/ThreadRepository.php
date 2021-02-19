@@ -3,6 +3,7 @@
 namespace Bbs\Repository;
 
 use Bbs\Domain\Thread;
+use Exception;
 use Illuminate\Support\Facades\Storage;
 
 class ThreadRepository implements ThreadRepositoryInterface
@@ -14,8 +15,13 @@ class ThreadRepository implements ThreadRepositoryInterface
 
     public function get(int $id): Thread
     {
+        $thread = Storage::get("persistence/thread_{$id}.txt");
 
-        return unserialize(Storage::get("persistence/thread_{$id}.txt"));
+        if ($thread === false) {
+            throw new Exception('Storage::getに失敗');
+        }
+
+        return unserialize($thread);
     }
 
     public function getAll(): array

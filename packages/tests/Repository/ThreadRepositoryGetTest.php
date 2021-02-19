@@ -26,4 +26,20 @@ class ThreadRepositoryGetTest extends TestCase
         // 3. 検証
         $this->assertEquals($thread, $response);
     }
+
+    public function testGetFileNotExist()
+    {
+        // 1. 準備
+        $targetId = 1;
+        Storage::shouldReceive('get')
+            ->once()
+            ->with("persistence/thread_{$targetId}.txt")
+            ->andReturn(false);
+
+        // 2. テスト対象を実行
+        $threadRepository = new ThreadRepository();
+        $response = $threadRepository->get($targetId);
+
+        // 3. 検証
+    }
 }
