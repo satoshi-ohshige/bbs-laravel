@@ -23,6 +23,9 @@ class ThreadsController extends Controller
     public function index($id, ThreadsGetUseCaseInterface $threadsGetUseCase)
     {
         $thread = $threadsGetUseCase->handle((int)$id);
+        if ($thread === null) {
+            abort(404);
+        }
         return view('threads.index', ['title' => $thread->getTitle(), 'body' => $thread->getBody()]);
     }
 }

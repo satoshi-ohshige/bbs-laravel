@@ -5,37 +5,43 @@ namespace BbsTests\Repository;
 use Bbs\Domain\Thread;
 use Bbs\Repository\ThreadRepository;
 use BbsTests\TestCase;
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Support\Facades\Storage;
 
 class ThreadRepositoryGetTest extends TestCase
 {
-    private int $targetId = 1;
-
-    public function setUp(): void
-    {
-        parent::setUp();
-
-        Storage::delete("persistence/thread_{$this->targetId}.txt");
-    }
-
     public function testGetSuccess()
     {
         // 1. 準備
-        $thread = new Thread($this->targetId, 'test_title', 'test_body', new \DateTimeImmutable());
-        Storage::put("persistence/thread_{$this->targetId}.txt", serialize($thread));
+        $targetId = 1;
+        $thread = new Thread($targetId, 'test_title', 'test_body', new \DateTimeImmutable());
+        Storage::shouldReceive('get')
+            ->once()
+            ->with("persistence/thread_{$targetId}.txt")
+            ->andReturn(serialize($thread));
 
         // 2. テスト対象を実行
         $threadRepository = new ThreadRepository();
-        $response = $threadRepository->get($this->targetId);
+        $response = $threadRepository->get($targetId);
 
         // 3. 検証
         $this->assertEquals($thread, $response);
     }
 
-    public function tearDown(): void
+    public function testGetFileNotExist()
     {
-        // parent::tearDown()内の処理によってfacadesの呼び出しができなくなるので先に実行しておく
-        Storage::delete("persistence/thread_{$this->targetId}.txt");
-        parent::tearDown();
+        // 1. 準備
+        $targetId = 1;
+        Storage::shouldReceive('get')
+            ->once()
+            ->with("persistence/thread_{$targetId}.txt")
+            ->andThrow(FileNotFoundException::class);
+
+        // 2. テスト対象を実行
+        $threadRepository = new ThreadRepository();
+        $thread = $threadRepository->get($targetId);
+
+        // 3. 検証
+        $this->assertNull($thread);
     }
 }
