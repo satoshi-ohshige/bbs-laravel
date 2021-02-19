@@ -3,7 +3,7 @@
 namespace Bbs\Repository;
 
 use Bbs\Domain\Thread;
-use Exception;
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Support\Facades\Storage;
 
 class ThreadRepository implements ThreadRepositoryInterface
@@ -13,9 +13,13 @@ class ThreadRepository implements ThreadRepositoryInterface
         Storage::put("persistence/thread_{$thread->getId()}.txt", serialize($thread));
     }
 
-    public function get(int $id): Thread
+    public function get(int $id): ?Thread
     {
-        $thread = Storage::get("persistence/thread_{$id}.txt");
+        try {
+            $thread = Storage::get("persistence/thread_{$id}.txt");
+        } catch (FileNotFoundException) {
+            return null;
+        }
 
         return unserialize($thread);
     }
