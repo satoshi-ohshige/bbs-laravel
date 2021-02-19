@@ -17,10 +17,6 @@ class ThreadRepository implements ThreadRepositoryInterface
     {
         $thread = Storage::get("persistence/thread_{$id}.txt");
 
-        if ($thread === false) {
-            throw new Exception('Storage::getに失敗');
-        }
-
         return unserialize($thread);
     }
 
