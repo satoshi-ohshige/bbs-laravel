@@ -8,8 +8,7 @@
 </head>
 <body>
 @foreach($threads as $thread)
-  <h1>{{ $thread->getTitle() }}</h1>
-  <p>{{ $thread->getBody() }}</p>
 @endforeach
+<a href="/threads/create">記事投稿</a>
 </body>
 </html>
