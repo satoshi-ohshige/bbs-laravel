@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Bbs\UseCase\TopUseCaseInterface;
+use Bbs\ViewModel\TopViewModel;
 use Illuminate\Http\Request;
 
 class TopController extends Controller
@@ -17,6 +18,8 @@ class TopController extends Controller
     public function index(Request $request)
     {
         $threads = $this->topUseCase->handle();
-        return view('top', ['threads' => $threads]);
+
+        $viewModel = new TopViewModel($threads);
+        return view('top', ['viewModel' => $viewModel]);
     }
 }

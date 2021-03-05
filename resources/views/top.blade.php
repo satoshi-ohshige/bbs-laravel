@@ -1,5 +1,5 @@
 @php
-// @var \Bbs\Domain\Thread[] $threads
+// @var \Bbs\ViewModel\TopViewModel $viewModel
 @endphp
 <!DOCTYPE html>
 <html lang="ja">
@@ -7,11 +7,11 @@
   <title>掲示板トップ</title>
 </head>
 <body>
-@foreach($threads as $thread)
+@foreach($viewModel->getThreads() as $thread)
   <a href="/threads/{{$thread->getId()}}">
     <h1>title: {{ $thread->getTitle() }}</h1>
   </a>
-  <p>{{ $thread->getShortBody(2) }}</p>
+  <p>{{ $thread->getBody() }}</p>
 @endforeach
 <a href="/threads/create">記事投稿</a>
 </body>
