@@ -33,6 +33,11 @@ class Thread
         return $this->body;
     }
 
+    public function getShortBody(int $length): string
+    {
+        return mb_substr($this->body, 0, $length);
+    }
+
     public function getPostDate(): \DateTimeInterface
     {
         return $this->postDate;
