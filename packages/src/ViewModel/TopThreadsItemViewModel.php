@@ -22,6 +22,6 @@ class TopThreadsItemViewModel
 
     public function getBody(): string
     {
-        return $this->thread->getShortBody(2);
+        return mb_substr($this->thread->getBody(), 0, 2);
     }
 }
